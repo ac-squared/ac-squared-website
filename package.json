@@ -1,0 +1,20 @@
+{
+  "name": "acccvi",
+  "version": "0.1.0",
+  "description": "Homepage for Anderson CVI Coding Club",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "url": "https://github.com/acccvi/acccvi/"
+  },
+  "license": "MIT"
+}
