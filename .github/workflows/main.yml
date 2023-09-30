@@ -2,8 +2,6 @@ name: Deploy to glitch.com
 on: 
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
