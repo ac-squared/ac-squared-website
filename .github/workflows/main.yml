@@ -1,5 +1,6 @@
 name: Deploy to glitch.com
 on: 
+  workflow_dispatch:
   push:
     branches: [ main ]
 jobs:
@@ -9,9 +10,9 @@ jobs:
     - name: repo-sync
       uses: wei/git-sync@v1
       env:
-        SOURCE_REPO: "https://github.com/acccvi/acccvi.git"
-        SOURCE_BRANCH: "main"
-        DESTINATION_REPO: ${{ secrets.glitch_git_URL }}
-        DESTINATION_BRANCH: "main"
+        SOURCE_REPO: ${{ secrets.GIT_URL }}
+        SOURCE_BRANCH: ${{ secrets.LOCAL_BRANCH }}
+        DESTINATION_REPO: ${{ secrets.GLITCH_GIT_URL }}
+        DESTINATION_BRANCH: ${{ secrets.GLITCH_BRANCH }}
       with:
         args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
