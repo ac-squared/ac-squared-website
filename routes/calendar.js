@@ -36,24 +36,26 @@ router.get('/events', async (request, response) => {
     const calendarResponse = await calendarRequest.text()
 
     // parse the ical calendar
-    const calendar = await ical.async.parseICS(calendarResponse)
+    const calendar = Object.values(await ical.async.parseICS(calendarResponse))
+
+    calendar.sort((a, b) => {
+      if(a.type != 'VEVENT' || b.type != 'VEVENT') return 0
+      return a.start - b.start
+    })
 
     const events = []
 
     // loop over events add add them to the array
-    for (let item in calendar) {
-      if (calendar.hasOwnProperty(item)) {
-        const event = calendar[item]
-        if (event.type == 'VEVENT') {
-          const data = {
-            name: event.summary,
-            location: event.location ?? `Coding Club`,
-            date: `${days[event.start.getDay()]} ${event.start.getDate()} ${months[event.start.getMonth()]} ${event.start.getFullYear()}`,
-            time: `${event.start.getHours()}:${event.start.getMinutes().toString().padStart(2, '0')}`
-          }
-
-          events.push(data)
+    for (const event of calendar) {
+      if (event.type == 'VEVENT') {
+        const data = {
+          name: event.summary,
+          location: event.location ?? `Coding Club`,
+          date: `${days[event.start.getDay()]} ${event.start.getDate()} ${months[event.start.getMonth()]} ${event.start.getFullYear()}`,
+          time: `${event.start.getHours()}:${event.start.getMinutes().toString().padStart(2, '0')}`
         }
+
+        events.push(data)
       }
     }
 
