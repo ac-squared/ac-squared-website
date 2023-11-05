@@ -1,5 +1,8 @@
 // server.js
 
+// import environment variables
+import 'dotenv/config'
+
 // import the express package to create the web server
 import express from "express";
 
@@ -8,6 +11,7 @@ import path from "path"
 
 // import the custom router
 import { router } from "./routes/route.js"
+import { calendar } from "./routes/calendar.js"
 
 // create a new express application
 const app = express();
@@ -23,6 +27,7 @@ app.use(express.static(path.resolve('public')));
 
 // use the router middleware to accept requests at the root
 app.use('/', router)
+app.use('/api/calendar', calendar)
 
 // start the app on the specified port and check for errors
 app.listen(PORT, (error) => {
