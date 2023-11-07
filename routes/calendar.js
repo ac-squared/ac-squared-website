@@ -18,10 +18,6 @@ const router = express.Router()
 // get the ICAL url from environment variables
 const icalURL = process.env.ICAL
 
-// months & days of the week in nice names
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
 // when the router recieves a request at the root, send the homepage file
 router.get('/events', async (request, response) => {
   // if the ical url is missing, send an error!
@@ -51,8 +47,7 @@ router.get('/events', async (request, response) => {
         const data = {
           name: event.summary,
           location: event.location ?? `Coding Club`,
-          date: `${days[event.start.getDay()]} ${event.start.getDate()} ${months[event.start.getMonth()]} ${event.start.getFullYear()}`,
-          time: `${event.start.getHours()}:${event.start.getMinutes().toString().padStart(2, '0')}`
+          time: event.start.getTime()
         }
 
         events.push(data)

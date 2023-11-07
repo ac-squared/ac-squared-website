@@ -8,6 +8,10 @@ const projectGrid = document.getElementById("projects-grid")
 const calendarLoading = document.getElementById("calendar-loading")
 const calendarGrid = document.getElementById("calendar-grid")
 
+// months & days of the week in nice names
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
 // load the featured projects from the server
 const loadProjects = () => {
   return new Promise(async (res, rej) => {
@@ -87,17 +91,17 @@ const loadCalendar = () => {
     // get the array of calendar events
     const events = calendarResponse.events
 
-    // if there's none show the error message
-    if(events.length == 0) {
-      calendarLoading.innerText = `No events upcoming! 😎`
-      res()
-      return;
-    }
-
     const elements = []
 
     // create the elements for all events
     for(const event of events) {
+      // skip if event already happened
+      if(event.time < Date.now()) continue;
+
+      const day = new Date(event.time)
+      const dateText = `${days[day.getDay()]} ${day.getDate()} ${months[day.getMonth()]} ${day.getFullYear()}`
+      const timeText = `${day.getHours()}:${day.getMinutes().toString().padStart(2, '0')}`
+
       const element = document.createElement("div")
       element.classList.add("calendar")
 
@@ -119,10 +123,18 @@ const loadCalendar = () => {
       element.appendChild(date)
 
       const time = document.createElement("span")
-      time.innerText = `${event.date} at ${event.time}`
+      time.innerText = `${dateText} at ${timeText}`
       date.appendChild(time)
 
       elements.push(element)
+    }
+
+    // if there's none show the error message
+    // after the creating elements as all events may have passed already
+    if(elements.length == 0) {
+      calendarLoading.innerText = `No events upcoming! 😎`
+      res()
+      return;
     }
     
     // add them to the grid
