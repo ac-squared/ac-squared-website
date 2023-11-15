@@ -12,13 +12,92 @@
     />
 
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
     <link rel="shortcut icon" href="./images/favicon.ico" />
     
-    <script src="./source/index.js"></script>
+    <script src="./source/index.js" type="module" defer></script>
   </head>
   <body>
-    <h1>
-      Anderson CVI Coding Club
-    </h1>
+    <header>
+      <div id="header-title">
+        <a href="/"><span id="header-name" class="terminal-path">ac-squared</span></a><span class="terminal-divisor">></span> home<span class="blink">|</span>
+
+      </div>
+      <div id="header-links">
+        <a href="https://github.com/ac-squared" target="_blank">github</a>
+        <a href="https://www.instagram.com/acvi_codeclub/" target="_blank">instagram</a>
+      </div>
+    </header>
+    <main>
+      <div class="section" id="about">
+        <h1>
+          <span class="terminal-divisor">~$</span> about
+        </h1>
+        <p class="content">
+          Hello! 👋 Welcome to Anderson Code Club! We’re open to everyone at any level of coding experience! We’ll be creating projects in small groups in a variety of programming languages, while also participating in coding challenges and workshops! You can submit an application to join the club, and also join the Google Classroom for announcements. Check out the calendar below to find when our next meeting will be! We hope to see you around! 😎
+        </p>
+        <div id="links-grid">
+          <a href="https://forms.gle/ZxbtccvfcCUjR8FJ8" target="_blank" class="button large">General Member Application</a>
+          <a href="https://classroom.google.com/c/NjM2MTIxNTkyODUx?cjc=zr4ay3u" target="_blank" class="button large">Join the Google Classroom</a>
+        </div>
+      </div>
+
+      <div class="section" id="execs">
+        <h1>
+          <span class="terminal-divisor">~$</span> execs
+        </h1>
+        <p>Meet the execs! 😎</p>
+        <div id="exec-grid">
+          <div class="exec">
+            <h2>Eashal Afzal</h2>
+            <p>Hey everyone! My name is Eashal and i'm thrilled to announce myself as a part of the executive team here at Anderson's coding club. I am passionate about coding languages such as JavaScript, Python and C++. Welcome to AC^2!</p>
+          </div>
+          <div class="exec">
+            <h2>Tait Berlette</h2>
+            <p>Hiya! 👋 I’m Tait, and I’m in my final year here at Anderson! I've been coding a lot through out my life, working on various projects in various languages! I enjoy working on the hardware side of computer science, building computers, phones, and watches! Let me know if you have any questions, I'm excited to get to know you all! 😀</p>
+          </div>
+          <div class="exec">
+            <h2>Irene Chen</h2>
+            <p>Hi! I'm Irene, a grade 12! (gr 479001600 😏) I like using code to solve problems that you don't need coding to do. My favourite language is C++. Outside of programming, I like playing gacha video games and browsing Reddit! See y'all around!</p>
+          </div>
+          <div class="exec">
+            <h2>Mahati Tadepalli</h2>
+            <p>Hey everyone! I’m Mahati, and I’m in grade 11 at ACVI. I love web dev as well as making games. Some languages that I am comfortable using are JavaScript, python, Java and C++. Apart from coding, I enjoy math, dancing, and catching up on all my favourite shows. I hope to see you all around. Welcome to AC^2! 😃</p>
+          </div>
+          <div class="exec">
+            <h2>Joyi Xue</h2>
+            <p>Hey guys! I'm Joyi and a senior at ACVI. Some languages that I'm comfortable with include C++, Java, and Python (ish). Sometimes, I like to solve competitive coding problems; my favourite algorithm is BFS🫶 If you have any feedback for the club, we'd be happy to hear it! Welcome to AC^2</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section" id="projects">
+        <h1>
+          <span class="terminal-divisor">~$</span> projects
+        </h1>
+        <p>Check out the featured projects we've made! ✨</p>
+        <p id="projects-loading" class="content">
+          Loading projects!
+        </p>
+        <div id="projects-grid" style="display: none"></div>
+      </div>
+      
+      <div class="section" id="calendar">
+        <h1>
+          <span class="terminal-divisor">~$</span> calendar
+        </h1>
+        <p>What's happening at Anderson Code Club! 📅</p>
+        <p id="calendar-loading" class="content">
+          Loading calendar!
+        </p>
+        <div id="calendar-grid" style="display: none"></div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Anderson Code Club 2023
+      </p>
+    </footer>
   </body>
 </html>

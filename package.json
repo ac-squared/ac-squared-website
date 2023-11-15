@@ -1,5 +1,5 @@
 {
-  "name": "acccvi",
+  "name": "ac-squared-website",
   "version": "0.1.0",
   "description": "Homepage for Anderson CVI Coding Club",
   "main": "server.js",
@@ -8,13 +8,17 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "@octokit/graphql": "4.x",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
+    "node-ical": "^0.16.1"
   },
   "engines": {
     "node": "16.x"
   },
   "repository": {
-    "url": "https://github.com/acccvi/acccvi/"
+    "url": "https://github.com/ac-squared/ac-squared-website/"
   },
   "license": "MIT"
 }
